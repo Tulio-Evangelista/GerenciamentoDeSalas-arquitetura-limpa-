@@ -13,7 +13,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-public class reservaEntity {
+public class SalaEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
