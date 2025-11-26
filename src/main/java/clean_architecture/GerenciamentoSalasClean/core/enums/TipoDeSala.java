@@ -4,6 +4,8 @@ public enum TipoDeSala {
 
     AULA,
     HAPPY_HOUR,
-    REUNIAO
+    REUNIAO,
+    AUDITORIO,
+    LABORATORIO
 
 }
