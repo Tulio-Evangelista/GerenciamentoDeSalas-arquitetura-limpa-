@@ -2,12 +2,7 @@ package clean_architecture.GerenciamentoSalasClean.core.usecases;
 
 import clean_architecture.GerenciamentoSalasClean.core.entities.Sala;
 
-public class buscarReservaCaseImpl implements buscarReservaCase {
+public interface BuscarReservaCase {
 
-
-    public Sala execute(Long id) {
-        return null;
-    }
-
-
+    public Sala execute(Long id);
 }

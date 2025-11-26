@@ -2,15 +2,12 @@ package clean_architecture.GerenciamentoSalasClean.core.usecases;
 
 import clean_architecture.GerenciamentoSalasClean.core.entities.Sala;
 
-public class criarReservaCaseImpl implements criarReservaCase {
+public class BuscarReservaCaseImpl implements BuscarReservaCase {
 
 
-    @Override
-    public Sala execute(Sala sala) {
+    public Sala execute(Long id) {
         return null;
     }
-
-
 
 
 }

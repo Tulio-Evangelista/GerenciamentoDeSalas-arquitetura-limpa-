@@ -2,8 +2,9 @@ package clean_architecture.GerenciamentoSalasClean.infra.mapper;
 
 import clean_architecture.GerenciamentoSalasClean.core.entities.Sala;
 import clean_architecture.GerenciamentoSalasClean.infra.dtos.SalaDto;
-import clean_architecture.GerenciamentoSalasClean.infra.persistence.SalaEntity;
+import org.springframework.stereotype.Component;
 
+@Component
 public class SalaMapper {
 
     public static SalaDto toDto(Sala sala) {
