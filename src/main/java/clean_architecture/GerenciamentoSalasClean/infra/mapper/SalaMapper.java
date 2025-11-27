@@ -8,6 +8,8 @@ import org.springframework.stereotype.Component;
 public class SalaMapper {
 
     public static SalaDto toDto(Sala sala) {
+        if (sala == null) return null;
+
         return new SalaDto(
                 sala.nome(),
                 sala.quantidadeDeLugares(),

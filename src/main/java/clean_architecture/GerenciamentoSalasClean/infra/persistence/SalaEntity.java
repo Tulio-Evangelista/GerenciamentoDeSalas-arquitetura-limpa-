@@ -2,17 +2,15 @@ package clean_architecture.GerenciamentoSalasClean.infra.persistence;
 
 import clean_architecture.GerenciamentoSalasClean.core.enums.TipoDeSala;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+
+import lombok.RequiredArgsConstructor;
 
 import java.time.LocalDateTime;
 
 @Table(name = "sala_reserva")
 @Entity
-@NoArgsConstructor
-@AllArgsConstructor
-@Data
+@RequiredArgsConstructor
+
 public class SalaEntity {
 
     @Id
@@ -31,4 +29,57 @@ public class SalaEntity {
     private TipoDeSala tipoDeSala;
 
 
+    public SalaEntity() {
+    }
+
+    public SalaEntity(Long id, String nome, int quantidadeDeLugares, String descricao, LocalDateTime dataInicio, LocalDateTime dataEncerramento, String localizacao, String responsavel, TipoDeSala tipoDeSala) {
+        this.id = id;
+        this.nome = nome;
+        this.quantidadeDeLugares = quantidadeDeLugares;
+        this.descricao = descricao;
+        this.dataInicio = dataInicio;
+        this.dataEncerramento = dataEncerramento;
+        this.localizacao = localizacao;
+        this.responsavel = responsavel;
+        this.tipoDeSala = tipoDeSala;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public int getQuantidadeDeLugares() {
+        return quantidadeDeLugares;
+    }
+
+    public String getDescricao() {
+        return descricao;
+    }
+
+    public LocalDateTime getDataInicio() {
+        return dataInicio;
+    }
+
+    public LocalDateTime getDataEncerramento() {
+        return dataEncerramento;
+    }
+
+    public String getLocalizacao() {
+        return localizacao;
+    }
+
+    public String getResponsavel() {
+        return responsavel;
+    }
+
+    public TipoDeSala getTipoDeSala() {
+        return tipoDeSala;
+    }
+
 }
+
+
