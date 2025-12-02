@@ -9,8 +9,6 @@ import java.time.LocalDateTime;
 
 @Table(name = "sala_reserva")
 @Entity
-@RequiredArgsConstructor
-
 public class SalaEntity {
 
     @Id

@@ -8,6 +8,9 @@ import clean_architecture.GerenciamentoSalasClean.infra.persistence.SalaEntity;
 import clean_architecture.GerenciamentoSalasClean.infra.persistence.SalaRepository;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+import java.util.Optional;
+
 @Component
 public class SalaRepositoryGateway implements SalaGatway {
 
@@ -25,9 +28,17 @@ public class SalaRepositoryGateway implements SalaGatway {
     public Sala criarSala(Sala sala) {
         SalaEntity salaEntity = new SalaEntity();
         SalaEntity novaSala = mapper.toEntity(sala);
+        novaSala = salaRepository.save(novaSala);
         return mapper.toDomain(novaSala);
     }
 
+
+    public List<Sala> buscarSalas() {
+        List<SalaEntity> salaEntities = salaRepository.findAll();
+        return salaEntities.stream()
+                .map(mapper::toDomain)
+                .toList();
+    }
 
 
 
