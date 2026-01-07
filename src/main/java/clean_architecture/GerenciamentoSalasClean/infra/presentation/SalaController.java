@@ -3,6 +3,7 @@ package clean_architecture.GerenciamentoSalasClean.infra.presentation;
 
 import clean_architecture.GerenciamentoSalasClean.core.entities.Sala;
 import clean_architecture.GerenciamentoSalasClean.core.usecases.BuscarReservaCase;
+import clean_architecture.GerenciamentoSalasClean.core.usecases.BuscarReservaPorIdCase;
 import clean_architecture.GerenciamentoSalasClean.core.usecases.CriarReservaCase;
 import clean_architecture.GerenciamentoSalasClean.core.usecases.DeletarReservaCase;
 import clean_architecture.GerenciamentoSalasClean.infra.dtos.SalaDto;
@@ -24,12 +25,20 @@ public class SalaController {
     private  final BuscarReservaCase buscarReservaCase;
     private final SalaMapper salaMapper;
     private final DeletarReservaCase deletarReservaCase;
+    private final BuscarReservaPorIdCase buscarReservaPorIdCase;
 
-    public SalaController(CriarReservaCase criarReservaCase, BuscarReservaCase buscarReservaCase, SalaMapper salaMapper, DeletarReservaCase deletarReservaCase) {
+    public SalaController(CriarReservaCase criarReservaCase,
+                          BuscarReservaCase buscarReservaCase,
+                          SalaMapper salaMapper,
+                          DeletarReservaCase deletarReservaCase,
+                          BuscarReservaPorIdCase buscarReservaPorIdCase) {
+
+
         this.criarReservaCase = criarReservaCase;
         this.buscarReservaCase = buscarReservaCase;
         this.salaMapper = salaMapper;
         this.deletarReservaCase = deletarReservaCase;
+        this.buscarReservaPorIdCase = buscarReservaPorIdCase;
     }
 
 
@@ -50,5 +59,11 @@ public class SalaController {
     @DeleteMapping("deletarReserva/{id}")
     public void deletarReserva(@PathVariable Long id) {
         Sala deletarReserva = deletarReservaCase.execute(id);
+    }
+
+    @GetMapping("buscarSalaPorId/{id}")
+    public SalaDto buscarSalaPorId(@PathVariable Long id) {
+        Sala sala = buscarReservaPorIdCase.execute(id);
+        return SalaMapper.toDto(sala);
     }
 }

@@ -50,5 +50,10 @@ public class SalaRepositoryGateway implements SalaGatway {
         return null;
     }
 
+    public Sala buscarSalaPorId(Long id) {
+        Optional<SalaEntity> salaEntityOptional = salaRepository.findById(id);
+        return salaEntityOptional.map(mapper::toDomain).orElse(null);
+    }
+
 
 }

@@ -3,6 +3,7 @@ package clean_architecture.GerenciamentoSalasClean.infra.beans;
 
 import clean_architecture.GerenciamentoSalasClean.core.gateway.SalaGatway;
 import clean_architecture.GerenciamentoSalasClean.core.usecases.BuscarReservaCaseImpl;
+import clean_architecture.GerenciamentoSalasClean.core.usecases.BuscarReservaPorIdImpl;
 import clean_architecture.GerenciamentoSalasClean.core.usecases.CriarReservaCaseImpl;
 import clean_architecture.GerenciamentoSalasClean.core.usecases.DeletarReservaCaseImpl;
 import org.springframework.context.annotation.Bean;
@@ -27,4 +28,10 @@ public class BeanConfiguration {
     public DeletarReservaCaseImpl deletarReservaCaseImpl(SalaGatway salaGatway) {
         return new DeletarReservaCaseImpl(salaGatway);
     }
+
+    @Bean
+    public BuscarReservaPorIdImpl buscarReservaPorIdImpl(SalaGatway salaGatway) {
+        return new BuscarReservaPorIdImpl(salaGatway);
+    }
+
 }

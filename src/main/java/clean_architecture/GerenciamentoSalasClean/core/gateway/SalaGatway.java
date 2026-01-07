@@ -13,4 +13,6 @@ public interface SalaGatway {
     List<Sala> buscarSalas();
 
     public Sala deletarSala(Long id);
+
+    public Sala buscarSalaPorId(Long id);
 }
