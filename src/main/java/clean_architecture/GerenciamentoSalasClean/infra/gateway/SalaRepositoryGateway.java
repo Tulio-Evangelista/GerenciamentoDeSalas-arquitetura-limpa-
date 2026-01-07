@@ -40,6 +40,15 @@ public class SalaRepositoryGateway implements SalaGatway {
                 .toList();
     }
 
+    public Sala deletarSala(Long id) {
+        Optional<SalaEntity> salaEntityOptional = salaRepository.findById(id);
+        if (salaEntityOptional.isPresent()) {
+            SalaEntity salaEntity = salaEntityOptional.get();
+            salaRepository.delete(salaEntity);
+            return mapper.toDomain(salaEntity);
+        }
+        return null;
+    }
 
 
 }

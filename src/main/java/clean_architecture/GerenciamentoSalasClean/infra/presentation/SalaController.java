@@ -4,6 +4,7 @@ package clean_architecture.GerenciamentoSalasClean.infra.presentation;
 import clean_architecture.GerenciamentoSalasClean.core.entities.Sala;
 import clean_architecture.GerenciamentoSalasClean.core.usecases.BuscarReservaCase;
 import clean_architecture.GerenciamentoSalasClean.core.usecases.CriarReservaCase;
+import clean_architecture.GerenciamentoSalasClean.core.usecases.DeletarReservaCase;
 import clean_architecture.GerenciamentoSalasClean.infra.dtos.SalaDto;
 import clean_architecture.GerenciamentoSalasClean.infra.mapper.SalaMapper;
 import lombok.AllArgsConstructor;
@@ -22,11 +23,13 @@ public class SalaController {
     private final CriarReservaCase criarReservaCase;
     private  final BuscarReservaCase buscarReservaCase;
     private final SalaMapper salaMapper;
+    private final DeletarReservaCase deletarReservaCase;
 
-    public SalaController(CriarReservaCase criarReservaCase, BuscarReservaCase buscarReservaCase, SalaMapper salaMapper) {
+    public SalaController(CriarReservaCase criarReservaCase, BuscarReservaCase buscarReservaCase, SalaMapper salaMapper, DeletarReservaCase deletarReservaCase) {
         this.criarReservaCase = criarReservaCase;
         this.buscarReservaCase = buscarReservaCase;
         this.salaMapper = salaMapper;
+        this.deletarReservaCase = deletarReservaCase;
     }
 
 
@@ -44,4 +47,8 @@ public class SalaController {
                 .toList();
     }
 
+    @DeleteMapping("deletarReserva/{id}")
+    public void deletarReserva(@PathVariable Long id) {
+        Sala deletarReserva = deletarReservaCase.execute(id);
+    }
 }

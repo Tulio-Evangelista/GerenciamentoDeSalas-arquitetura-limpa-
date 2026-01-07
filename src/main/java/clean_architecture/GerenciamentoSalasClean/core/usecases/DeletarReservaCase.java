@@ -1,6 +1,8 @@
 package clean_architecture.GerenciamentoSalasClean.core.usecases;
 
+import clean_architecture.GerenciamentoSalasClean.core.entities.Sala;
+
 public interface DeletarReservaCase {
 
-    public void execute(Long id);
+    public Sala execute(Long id);
 }
