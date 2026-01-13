@@ -1,11 +1,9 @@
 package clean_architecture.GerenciamentoSalasClean.infra.beans;
 
 
+import clean_architecture.GerenciamentoSalasClean.core.exception.DomainExecption;
 import clean_architecture.GerenciamentoSalasClean.core.gateway.SalaGatway;
-import clean_architecture.GerenciamentoSalasClean.core.usecases.BuscarReservaCaseImpl;
-import clean_architecture.GerenciamentoSalasClean.core.usecases.BuscarReservaPorIdImpl;
-import clean_architecture.GerenciamentoSalasClean.core.usecases.CriarReservaCaseImpl;
-import clean_architecture.GerenciamentoSalasClean.core.usecases.DeletarReservaCaseImpl;
+import clean_architecture.GerenciamentoSalasClean.core.usecases.*;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -30,7 +28,7 @@ public class BeanConfiguration {
     }
 
     @Bean
-    public BuscarReservaPorIdImpl buscarReservaPorIdImpl(SalaGatway salaGatway) {
+    public BuscarReservaPorIdCase buscarReservaPorIdCase(SalaGatway salaGatway) {
         return new BuscarReservaPorIdImpl(salaGatway);
     }
 

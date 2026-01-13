@@ -8,6 +8,7 @@ import clean_architecture.GerenciamentoSalasClean.infra.persistence.SalaEntity;
 import clean_architecture.GerenciamentoSalasClean.infra.persistence.SalaRepository;
 import org.springframework.stereotype.Component;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -24,16 +25,30 @@ public class SalaRepositoryGateway implements SalaGatway {
         this.mapper = salaEntityMapper;
     }
 
+
+
     @Override
-    public Sala criarSala(Sala sala) {
+    public  Sala criarSala(Sala sala) {
         SalaEntity salaEntity = new SalaEntity();
         SalaEntity novaSala = mapper.toEntity(sala);
         novaSala = salaRepository.save(novaSala);
         return mapper.toDomain(novaSala);
     }
 
+    @Override
+    public boolean existeReserva(String nome,
+                                 LocalDateTime dataInicio,
+                                 LocalDateTime dataEncerramento) {
+        return salaRepository
+                .existeReserva(
+                        nome,
+                        dataInicio,
+                        dataEncerramento
+                );
+    }
 
-    public List<Sala> buscarSalas() {
+
+    public  List<Sala> buscarSalas() {
         List<SalaEntity> salaEntities = salaRepository.findAll();
         return salaEntities.stream()
                 .map(mapper::toDomain)
@@ -50,9 +65,9 @@ public class SalaRepositoryGateway implements SalaGatway {
         return null;
     }
 
-    public Sala buscarSalaPorId(Long id) {
+    public Optional<Sala> buscarSalaPorId(Long id) {
         Optional<SalaEntity> salaEntityOptional = salaRepository.findById(id);
-        return salaEntityOptional.map(mapper::toDomain).orElse(null);
+        return salaEntityOptional.map(mapper::toDomain);
     }
 
 

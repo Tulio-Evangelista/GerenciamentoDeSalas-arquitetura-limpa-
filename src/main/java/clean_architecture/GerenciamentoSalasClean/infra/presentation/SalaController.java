@@ -11,9 +11,13 @@ import clean_architecture.GerenciamentoSalasClean.infra.mapper.SalaMapper;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.Objects;
 
 @RestController
 @RequestMapping("api/v1/")
@@ -43,9 +47,12 @@ public class SalaController {
 
 
     @PostMapping("criarReserva")
-    public SalaDto criarReserva(@RequestBody SalaDto salaDto) {
+    public ResponseEntity<Map<String, Object>> criarReserva(@RequestBody SalaDto salaDto) {
         Sala novaReserva = criarReservaCase.execute(salaMapper.toDomain(salaDto));
-        return SalaMapper.toDto(novaReserva);
+        Map<String, Object> response = new HashMap<>();
+        response.put("message", "Reserva criada com sucesso");
+        response.put("reserva", SalaMapper.toDto(novaReserva));
+        return ResponseEntity.ok(response);
     }
 
     @GetMapping("buscarReserva")
