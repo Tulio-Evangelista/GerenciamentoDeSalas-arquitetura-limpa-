@@ -17,7 +17,7 @@ public class GlobalExceptionHandler {
     }
 
     @ExceptionHandler(ReservaExisteExeception.class)
-    public ResponseEntity<String> handleSalaNaoEncontrada(ReservaExisteExeception ex) {
+    public ResponseEntity<String> handleSalaReservada(ReservaExisteExeception ex) {
         return new ResponseEntity<>(ex.getMessage(), HttpStatus.CONFLICT);
     }
 }

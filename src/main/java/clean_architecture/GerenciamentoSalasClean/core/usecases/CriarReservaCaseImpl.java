@@ -20,9 +20,9 @@ public class CriarReservaCaseImpl implements CriarReservaCase {
                 sala.dataInicio(),
                 sala.dataEncerramento()
         )) {
-            throw new ReservaExisteExeception();
+            throw new ReservaExisteExeception("Já existe uma reserva para esta sala neste horário.");
         }
-       Sala criarSala = salaGatway.criarSala(sala);
+        Sala criarSala = salaGatway.criarSala(sala);
         return criarSala;
     }
 

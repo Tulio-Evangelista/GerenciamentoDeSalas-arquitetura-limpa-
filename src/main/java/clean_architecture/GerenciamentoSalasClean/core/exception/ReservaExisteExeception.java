@@ -1,9 +1,9 @@
 package clean_architecture.GerenciamentoSalasClean.core.exception;
 
-public class ReservaExisteExeception extends DomainExecption {
+public class ReservaExisteExeception extends RuntimeException {
 
 
-    public ReservaExisteExeception() {
-        super("Já existe uma reserva para esta sala neste horário.");
+    public ReservaExisteExeception(String message) {
+        super( message );
     }
 }
